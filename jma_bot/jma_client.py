@@ -61,6 +61,8 @@ class AreaMaster:
             return self.class10s[code]["name"]
         if code in self.offices:
             return self.offices[code]["name"]
+        if code in config.EARLY_WARNING_AREA_NAME_OVERRIDES:
+            return config.EARLY_WARNING_AREA_NAME_OVERRIDES[code]
         return code  # fall back to the raw code rather than crash
 
     def office_codes(self) -> list[str]:
@@ -165,6 +167,92 @@ def fetch_all_warnings(area_master: AreaMaster) -> tuple[list[WarningEntry], dic
     report_datetimes: dict[str, str] = {}
     for office_code in area_master.office_codes():
         report_dt, entries = fetch_office_warnings(office_code)
+        if report_dt:
+            report_datetimes[office_code] = report_dt
+        all_entries.extend(entries)
+    return all_entries, report_datetimes
+
+
+# ---------------------------------------------------------------------------
+# Early warning (早期注意情報 / 警報級の可能性)
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class EarlyWarningEntry:
+    """One area's current likelihood state for one notify-worthy category.
+
+    `level` is the highest likelihood ("高" or "中") found anywhere across
+    the combined short-range (~2 days) + weekly (3-7 days) outlook windows,
+    and `earliest_time` is the first timeDefine at which that level appears
+    -- enough for the formatter to show a rough "いつ" (e.g. 明後日) without
+    reproducing JMA's whole day-by-day table.
+    """
+
+    office_code: str
+    area_code: str
+    category: str  # e.g. "heavy_rain"
+    level: str  # "高" | "中"
+    earliest_time: str | None
+
+
+def fetch_office_early_warnings(office_code: str) -> tuple[str | None, list[EarlyWarningEntry]]:
+    """Fetches 早期注意情報 (警報級の可能性) for one office.
+
+    See EARLY_WARNING_URL_TEMPLATE in config.py for how this endpoint was
+    found and verified, and for the payload shape. We only look at
+    categories in config.NOTIFY_EARLY_WARNING_CATEGORIES (MVP: heavy rain);
+    everything else in the payload is ignored.
+    """
+    url = config.EARLY_WARNING_URL_TEMPLATE.format(office=office_code)
+    try:
+        payload = _get_json(url)
+    except JmaFetchError as exc:
+        logger.warning("skipping office %s early-warning: %s", office_code, exc)
+        return None, []
+
+    if not isinstance(payload, list) or not payload:
+        logger.warning("skipping office %s early-warning: unexpected payload shape", office_code)
+        return None, []
+
+    report_datetime: str | None = None
+    # (area_code, category) -> [(timeDefine, level), ...]
+    occurrences: dict[tuple[str, str], list[tuple[str, str]]] = {}
+
+    try:
+        for part in payload:
+            report_datetime = part.get("reportDatetime") or report_datetime
+            for ts in part.get("timeSeries", []):
+                time_defines = ts.get("timeDefines", [])
+                for area in ts.get("areas", []):
+                    area_code = area.get("code")
+                    for prop in area.get("properties", []):
+                        category = config.EARLY_WARNING_TYPE_CATEGORY.get(prop.get("type"))
+                        if category is None or category not in config.NOTIFY_EARLY_WARNING_CATEGORIES:
+                            continue
+                        for time_str, level in zip(time_defines, prop.get("probabilities", [])):
+                            if level not in config.LIKELIHOOD_RANK:
+                                continue  # "" (no elevated risk) or an unmapped value
+                            occurrences.setdefault((area_code, category), []).append((time_str, level))
+    except (KeyError, TypeError, ValueError) as exc:
+        logger.warning("skipping office %s early-warning: could not parse (%s)", office_code, exc)
+        return None, []
+
+    entries: list[EarlyWarningEntry] = []
+    for (area_code, category), points in occurrences.items():
+        best_level = max((level for _, level in points), key=lambda lv: config.LIKELIHOOD_RANK[lv])
+        earliest_time = min(t for t, lv in points if lv == best_level)
+        entries.append(EarlyWarningEntry(office_code, area_code, category, best_level, earliest_time))
+
+    return report_datetime, entries
+
+
+def fetch_all_early_warnings(area_master: AreaMaster) -> tuple[list[EarlyWarningEntry], dict[str, str]]:
+    """Same idea as fetch_all_warnings, but for 早期注意情報 (警報級の可能性)."""
+    all_entries: list[EarlyWarningEntry] = []
+    report_datetimes: dict[str, str] = {}
+    for office_code in area_master.office_codes():
+        report_dt, entries = fetch_office_early_warnings(office_code)
         if report_dt:
             report_datetimes[office_code] = report_dt
         all_entries.extend(entries)

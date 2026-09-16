@@ -39,13 +39,23 @@ def run_once() -> int:
     typhoons = jma_client.fetch_all_typhoons()
     logger.info("Fetched %d active tropical cyclone(s)", len(typhoons))
 
+    logger.info("Fetching early warning (早期注意情報) outlook ...")
+    early_warning_entries, early_warning_report_datetimes = jma_client.fetch_all_early_warnings(area_master)
+    logger.info("Fetched %d early-warning entries nationwide", len(early_warning_entries))
+
     saved_state = state.load_state()
 
     warning_changes = state.diff_warnings(warning_entries, saved_state)
     typhoon_changes = state.diff_typhoons(typhoons, saved_state)
-    logger.info("%d warning change(s), %d typhoon change(s) to notify", len(warning_changes), len(typhoon_changes))
+    early_warning_changes = state.diff_early_warnings(early_warning_entries, saved_state)
+    logger.info(
+        "%d warning change(s), %d typhoon change(s), %d early-warning change(s) to notify",
+        len(warning_changes),
+        len(typhoon_changes),
+        len(early_warning_changes),
+    )
 
-    if not warning_changes and not typhoon_changes:
+    if not warning_changes and not typhoon_changes and not early_warning_changes:
         logger.info("Nothing new to notify. Done.")
         state.save_state(saved_state)
         return 0
@@ -57,13 +67,23 @@ def run_once() -> int:
         if relevant_times:
             report_time = max(relevant_times)
 
+    early_warning_report_time = None
+    if early_warning_changes:
+        relevant_offices = {c.office_code for c in early_warning_changes}
+        relevant_times = [early_warning_report_datetimes[o] for o in relevant_offices if o in early_warning_report_datetimes]
+        if relevant_times:
+            early_warning_report_time = max(relevant_times)
+
     blocks: list[dict] = []
     blocks.extend(formatter.build_warning_blocks(warning_changes, area_master, report_time))
     if blocks and typhoon_changes:
         blocks.append({"type": "divider"})
     blocks.extend(formatter.build_typhoon_blocks(typhoon_changes))
+    if blocks and early_warning_changes:
+        blocks.append({"type": "divider"})
+    blocks.extend(formatter.build_early_warning_blocks(early_warning_changes, area_master, early_warning_report_time))
 
-    fallback_text = formatter.build_fallback_text(warning_changes, typhoon_changes)
+    fallback_text = formatter.build_fallback_text(warning_changes, typhoon_changes, early_warning_changes)
 
     ok = slack_notifier.send_message(blocks, fallback_text)
     if not ok:

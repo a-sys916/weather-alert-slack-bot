@@ -58,6 +58,33 @@ TYPHOON_LIST_URL = "https://www.jma.go.jp/bosai/typhoon/data/targetTc.json"
 # TYPHOON_LIST_URL above.
 TYPHOON_FORECAST_URL_TEMPLATE = "https://www.jma.go.jp/bosai/typhoon/data/{event_id}/forecast.json"
 
+# 早期注意情報 (警報級の可能性) -- likelihood that a warning-level event will
+# occur in the next few days, published well before any actual 注意報/警報 is
+# issued. Found by inspecting the live JS (probability/js/*.js, minified) of
+# https://www.jma.go.jp/bosai/probability/ (linked from the "早期注意情報" tile
+# on https://www.jma.go.jp/bosai/#pattern=default and from map.html
+# #contents=probability) on 2026-09-16, then confirmed by fetching it directly:
+#   https://www.jma.go.jp/bosai/probability/data/probability/r8/130000.json
+# returned live, current data (reportDatetime matched the day of testing).
+# Same {office} 6-digit code as WARNING_URL_TEMPLATE, and the same "r8"
+# endpoint style, which is a good sign it's on the same current (post
+# 2026-05-29) system rather than a frozen leftover.
+#
+# Response shape (verified live): a JSON array of exactly 2 report objects --
+#   [0] short-range outlook: ~next 2 days, timeDefines in 6-hour (PT6H) steps.
+#   [1] weekly outlook: days 3-7 ahead, timeDefines in 1-day (P1D) steps.
+# Both have the same per-area shape: timeSeries[0].areas[] keyed by class10
+# area code (same codes as data/area_master.json / WARNING_URL_TEMPLATE),
+# each with a "properties" list of {"type": <phenomenon name>, "probabilities":
+# [...]} parallel to that report's timeDefines. Observed "type" values (see
+# EARLY_WARNING_TYPE_CATEGORY below) differ slightly in wording between [0]
+# and [1] for the same phenomenon (e.g. "大雨の警報級の可能性" vs "雨の警報級の
+# 可能性"). Each probability value observed live was either "" (no elevated
+# risk), "中" (medium), or "高" (high) -- confirmed against the page's own JS,
+# which maps exactly these two non-empty strings to its "high"/"medium" CSS
+# classes and treats anything else as unstyled/absent.
+EARLY_WARNING_URL_TEMPLATE = "https://www.jma.go.jp/bosai/probability/data/probability/r8/{office}.json"
+
 REQUEST_TIMEOUT_SECONDS = 20
 REQUEST_USER_AGENT = "weather-alert-slack-bot/1.0 (+https://github.com/; contact=miyoshi@entaku.co.jp)"
 
@@ -166,4 +193,82 @@ TYPHOON_CATEGORY_LABELS = {
     "TS": "台風（熱帯暴風雨相当）",
     "STS": "台風（強い熱帯暴風雨相当）",
     "TY": "台風",
+}
+
+# ---------------------------------------------------------------------------
+# 早期注意情報 (警報級の可能性) category table
+#
+# Maps the raw "type" string from EARLY_WARNING_URL_TEMPLATE's JSON to one of
+# our own category keys, mirroring the WARNING_CODE_TABLE / NOTIFY_CATEGORIES
+# pattern above so this is easy to extend to other phenomena later. MVP scope
+# (per project brief) is 大雨 (heavy rain) only -- the other phenomena JMA
+# publishes here (土砂災害/landslide, 雪/snow, 風(風雪)/wind, 波/wave, 潮位/tide)
+# are listed but deliberately left unmapped for now.
+# ---------------------------------------------------------------------------
+
+EARLY_WARNING_TYPE_CATEGORY: dict[str, str] = {
+    "大雨の警報級の可能性": "heavy_rain",  # short-range (~2日先) product's label
+    "雨の警報級の可能性": "heavy_rain",  # weekly (3-7日先) product's label for the same risk
+    # -- unmapped for now; add an entry here (and to
+    #    NOTIFY_EARLY_WARNING_CATEGORIES below) to start notifying on it --
+    # "土砂災害の警報級の可能性": "landslide",
+    # "雪の警報級の可能性": "snow",
+    # "風（風雪）の警報級の可能性": "wind",
+    # "波の警報級の可能性": "wave",
+    # "潮位の警報級の可能性": "tide",
+}
+
+# Which categories to actually notify on (MVP: heavy rain only).
+NOTIFY_EARLY_WARNING_CATEGORIES = {"heavy_rain"}
+
+NOTIFY_EARLY_WARNING_TYPES: set[str] = {
+    type_ for type_, category in EARLY_WARNING_TYPE_CATEGORY.items() if category in NOTIFY_EARLY_WARNING_CATEGORIES
+}
+
+EARLY_WARNING_CATEGORY_LABELS = {"heavy_rain": "大雨"}
+
+# A handful of areas in this product are reported at a coarser grouping than
+# our class10 area master (data/area_master.json, built from JMA's official
+# area.json) knows about -- e.g. Tokyo's early-warning data uses a single
+# merged "伊豆諸島" (130100) instead of the north/south split (130020/130030)
+# used by WARNING_URL_TEMPLATE. These names were NOT guessed: they were
+# cross-verified against JMA's own (already relied upon elsewhere) weekly
+# forecast endpoint -- https://www.jma.go.jp/bosai/forecast/data/forecast/
+# {office}.json -- which uses the same merged-area codes with an explicit
+# "name" field. Checked live on 2026-09-16 for every such code seen in a
+# nationwide probability/r8 fetch (020200, 030100, 070100, 130100); add more
+# here if a future run logs an unrecognized area code for this product.
+EARLY_WARNING_AREA_NAME_OVERRIDES: dict[str, str] = {
+    "020200": "下北・三八上北",
+    "030100": "沿岸",
+    "070100": "中通り・浜通り",
+    "130100": "伊豆諸島",
+}
+
+# Likelihood ranking + emoji. Deliberately NOT reusing LEVEL_EMOJI (🟡🟠🔴,
+# which mean an advisory/warning has actually been issued) -- these emoji are
+# for a "might happen in a few days" heads-up and must look clearly less
+# urgent than an issued warning.
+LIKELIHOOD_RANK = {"中": 1, "高": 2}
+LIKELIHOOD_EMOJI = {"中": "👀", "高": "🔎"}
+
+# ---------------------------------------------------------------------------
+# Representative reference points for rough typhoon-distance display
+#
+# One approximate city/coordinate per major region, used only to say things
+# like "沖縄地方まで約320km" instead of raw lat/lon in typhoon notifications.
+# These are NOT authoritative regional boundaries or JMA-defined centroids --
+# just well-known city coordinates picked for readability.
+# ---------------------------------------------------------------------------
+
+REGION_REFERENCE_POINTS: dict[str, tuple[float, float]] = {
+    "北海道": (43.0642, 141.3469),  # 札幌
+    "東北": (38.2682, 140.8694),  # 仙台
+    "関東": (35.6812, 139.7671),  # 東京
+    "中部": (35.1815, 136.9066),  # 名古屋
+    "近畿": (34.6937, 135.5023),  # 大阪
+    "中国": (34.3853, 132.4553),  # 広島
+    "四国": (33.8392, 132.7657),  # 松山
+    "九州": (33.5904, 130.4017),  # 福岡
+    "沖縄": (26.2124, 127.6809),  # 那覇
 }

@@ -20,22 +20,25 @@ import logging
 from dataclasses import dataclass, field
 
 from . import config
-from .jma_client import TyphoonInfo, WarningEntry
+from .jma_client import EarlyWarningEntry, TyphoonInfo, WarningEntry
 
 logger = logging.getLogger(__name__)
 
 
 def load_state() -> dict:
     if not config.STATE_PATH.exists():
-        return {"warnings": {}, "typhoons": {}}
+        return {"warnings": {}, "typhoons": {}, "early_warnings": {}}
     try:
         with open(config.STATE_PATH, encoding="utf-8") as f:
             data = json.load(f)
     except (json.JSONDecodeError, OSError) as exc:
         logger.warning("could not read state file (%s), starting fresh: %s", config.STATE_PATH, exc)
-        return {"warnings": {}, "typhoons": {}}
+        return {"warnings": {}, "typhoons": {}, "early_warnings": {}}
     data.setdefault("warnings", {})
     data.setdefault("typhoons", {})
+    # Added when 早期注意情報 support was introduced -- setdefault so an old
+    # seen.json (from before this key existed) doesn't crash on first run.
+    data.setdefault("early_warnings", {})
     return data
 
 
@@ -178,5 +181,88 @@ def diff_typhoons(typhoons: list[TyphoonInfo], state: dict) -> list[TyphoonChang
     for stale_id in list(state["typhoons"].keys()):
         if stale_id not in active_ids:
             del state["typhoons"][stale_id]
+
+    return changes
+
+
+def _early_warning_key(entry: EarlyWarningEntry) -> str:
+    # Deliberately a different shape from _warning_key's "office:area:code"
+    # (category name instead of a numeric warning code) so the two key
+    # spaces can never collide even if stored in the same dict.
+    return f"{entry.office_code}:{entry.area_code}:{entry.category}"
+
+
+@dataclass
+class EarlyWarningChange:
+    change_type: str  # "new" | "level_change" | "cleared"
+    office_code: str
+    area_code: str
+    category: str  # e.g. "heavy_rain"
+    level: str | None  # "高" | "中", None when cleared
+    previous_level: str | None
+    earliest_time: str | None
+
+
+def diff_early_warnings(entries: list[EarlyWarningEntry], state: dict) -> list[EarlyWarningChange]:
+    """Same idea as diff_warnings, but for 早期注意情報 (警報級の可能性).
+
+    Stored in state["early_warnings"], a separate namespace from
+    state["warnings"] used by actual issued advisories/warnings above --
+    the two are different kinds of information (likelihood vs. issued) and
+    must never be conflated or dedup against each other.
+    """
+    changes: list[EarlyWarningChange] = []
+    seen_keys: set[str] = set()
+
+    for entry in entries:
+        key = _early_warning_key(entry)
+        seen_keys.add(key)
+        previous = state["early_warnings"].get(key)
+
+        if previous is None:
+            changes.append(
+                EarlyWarningChange(
+                    change_type="new",
+                    office_code=entry.office_code,
+                    area_code=entry.area_code,
+                    category=entry.category,
+                    level=entry.level,
+                    previous_level=None,
+                    earliest_time=entry.earliest_time,
+                )
+            )
+        elif previous.get("level") != entry.level:
+            changes.append(
+                EarlyWarningChange(
+                    change_type="level_change",
+                    office_code=entry.office_code,
+                    area_code=entry.area_code,
+                    category=entry.category,
+                    level=entry.level,
+                    previous_level=previous.get("level"),
+                    earliest_time=entry.earliest_time,
+                )
+            )
+        # (else: same level as last run -> stay silent)
+
+        state["early_warnings"][key] = {"level": entry.level, "earliest_time": entry.earliest_time}
+
+    # An area/category that dropped out of the outlook entirely (risk cleared,
+    # or it aged out of the forecast window) -- mirror diff_warnings' 解除.
+    for stale_key in [k for k in state["early_warnings"] if k not in seen_keys]:
+        previous = state["early_warnings"][stale_key]
+        office_code, area_code, category = stale_key.split(":", 2)
+        changes.append(
+            EarlyWarningChange(
+                change_type="cleared",
+                office_code=office_code,
+                area_code=area_code,
+                category=category,
+                level=None,
+                previous_level=previous.get("level"),
+                earliest_time=None,
+            )
+        )
+        del state["early_warnings"][stale_key]
 
     return changes
