@@ -1,0 +1,948 @@
+{
+  "class10s": {
+    "011000": {
+      "enName": "Soya Region",
+      "name": "宗谷地方",
+      "parent": "011000"
+    },
+    "012010": {
+      "enName": "Kamikawa Region",
+      "name": "上川地方",
+      "parent": "012000"
+    },
+    "012020": {
+      "enName": "Rumoi Region",
+      "name": "留萌地方",
+      "parent": "012000"
+    },
+    "013010": {
+      "enName": "Abashiri Region",
+      "name": "網走地方",
+      "parent": "013000"
+    },
+    "013020": {
+      "enName": "Kitami Region",
+      "name": "北見地方",
+      "parent": "013000"
+    },
+    "013030": {
+      "enName": "Mombetsu Region",
+      "name": "紋別地方",
+      "parent": "013000"
+    },
+    "014010": {
+      "enName": "Nemuro Region",
+      "name": "根室地方",
+      "parent": "014100"
+    },
+    "014020": {
+      "enName": "Kushiro Region",
+      "name": "釧路地方",
+      "parent": "014100"
+    },
+    "014030": {
+      "enName": "Tokachi Region",
+      "name": "十勝地方",
+      "parent": "014030"
+    },
+    "015010": {
+      "enName": "Iburi Region",
+      "name": "胆振地方",
+      "parent": "015000"
+    },
+    "015020": {
+      "enName": "Hidaka Region",
+      "name": "日高地方",
+      "parent": "015000"
+    },
+    "016010": {
+      "enName": "Ishikari Region",
+      "name": "石狩地方",
+      "parent": "016000"
+    },
+    "016020": {
+      "enName": "Sorachi Region",
+      "name": "空知地方",
+      "parent": "016000"
+    },
+    "016030": {
+      "enName": "Shiribeshi Region",
+      "name": "後志地方",
+      "parent": "016000"
+    },
+    "017010": {
+      "enName": "Oshima Region",
+      "name": "渡島地方",
+      "parent": "017000"
+    },
+    "017020": {
+      "enName": "Hiyama Region",
+      "name": "檜山地方",
+      "parent": "017000"
+    },
+    "020010": {
+      "enName": "Tsugaru",
+      "name": "津軽",
+      "parent": "020000"
+    },
+    "020020": {
+      "enName": "Shimokita",
+      "name": "下北",
+      "parent": "020000"
+    },
+    "020030": {
+      "enName": "Sanpachi Kamikita",
+      "name": "三八上北",
+      "parent": "020000"
+    },
+    "030010": {
+      "enName": "Inland",
+      "name": "内陸",
+      "parent": "030000"
+    },
+    "030020": {
+      "enName": "Northern Coast",
+      "name": "沿岸北部",
+      "parent": "030000"
+    },
+    "030030": {
+      "enName": "Southern Coast",
+      "name": "沿岸南部",
+      "parent": "030000"
+    },
+    "040010": {
+      "enName": "Eastern Region",
+      "name": "東部",
+      "parent": "040000"
+    },
+    "040020": {
+      "enName": "Western Region",
+      "name": "西部",
+      "parent": "040000"
+    },
+    "050010": {
+      "enName": "Coast",
+      "name": "沿岸",
+      "parent": "050000"
+    },
+    "050020": {
+      "enName": "Inland",
+      "name": "内陸",
+      "parent": "050000"
+    },
+    "060010": {
+      "enName": "Murayama",
+      "name": "村山",
+      "parent": "060000"
+    },
+    "060020": {
+      "enName": "Okitama",
+      "name": "置賜",
+      "parent": "060000"
+    },
+    "060030": {
+      "enName": "Shonai",
+      "name": "庄内",
+      "parent": "060000"
+    },
+    "060040": {
+      "enName": "Mogami",
+      "name": "最上",
+      "parent": "060000"
+    },
+    "070010": {
+      "enName": "Nakadori",
+      "name": "中通り",
+      "parent": "070000"
+    },
+    "070020": {
+      "enName": "Hamadori",
+      "name": "浜通り",
+      "parent": "070000"
+    },
+    "070030": {
+      "enName": "Aizu",
+      "name": "会津",
+      "parent": "070000"
+    },
+    "080010": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "080000"
+    },
+    "080020": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "080000"
+    },
+    "090010": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "090000"
+    },
+    "090020": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "090000"
+    },
+    "100010": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "100000"
+    },
+    "100020": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "100000"
+    },
+    "110010": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "110000"
+    },
+    "110020": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "110000"
+    },
+    "110030": {
+      "enName": "Chichibu Region",
+      "name": "秩父地方",
+      "parent": "110000"
+    },
+    "120010": {
+      "enName": "North-western Region",
+      "name": "北西部",
+      "parent": "120000"
+    },
+    "120020": {
+      "enName": "North-eastern Region",
+      "name": "北東部",
+      "parent": "120000"
+    },
+    "120030": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "120000"
+    },
+    "130010": {
+      "enName": "Tokyo Region",
+      "name": "東京地方",
+      "parent": "130000"
+    },
+    "130020": {
+      "enName": "Northern Izu Islands",
+      "name": "伊豆諸島北部",
+      "parent": "130000"
+    },
+    "130030": {
+      "enName": "Southern Izu Islands",
+      "name": "伊豆諸島南部",
+      "parent": "130000"
+    },
+    "130040": {
+      "enName": "Ogasawara Islands",
+      "name": "小笠原諸島",
+      "parent": "130000"
+    },
+    "140010": {
+      "enName": "Eastern Region",
+      "name": "東部",
+      "parent": "140000"
+    },
+    "140020": {
+      "enName": "Western Region",
+      "name": "西部",
+      "parent": "140000"
+    },
+    "150010": {
+      "enName": "Kaetsu",
+      "name": "下越",
+      "parent": "150000"
+    },
+    "150020": {
+      "enName": "Chuetsu",
+      "name": "中越",
+      "parent": "150000"
+    },
+    "150030": {
+      "enName": "Joetsu",
+      "name": "上越",
+      "parent": "150000"
+    },
+    "150040": {
+      "enName": "Sado",
+      "name": "佐渡",
+      "parent": "150000"
+    },
+    "160010": {
+      "enName": "Eastern Region",
+      "name": "東部",
+      "parent": "160000"
+    },
+    "160020": {
+      "enName": "Western Region",
+      "name": "西部",
+      "parent": "160000"
+    },
+    "170010": {
+      "enName": "Kaga",
+      "name": "加賀",
+      "parent": "170000"
+    },
+    "170020": {
+      "enName": "Noto",
+      "name": "能登",
+      "parent": "170000"
+    },
+    "180010": {
+      "enName": "Reihoku",
+      "name": "嶺北",
+      "parent": "180000"
+    },
+    "180020": {
+      "enName": "Reinan",
+      "name": "嶺南",
+      "parent": "180000"
+    },
+    "190010": {
+      "enName": "Central Western Region",
+      "name": "中・西部",
+      "parent": "190000"
+    },
+    "190020": {
+      "enName": "Eastern Region and Fuji Five Lakes",
+      "name": "東部・富士五湖",
+      "parent": "190000"
+    },
+    "200010": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "200000"
+    },
+    "200020": {
+      "enName": "Central Region",
+      "name": "中部",
+      "parent": "200000"
+    },
+    "200030": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "200000"
+    },
+    "210010": {
+      "enName": "Mino Region",
+      "name": "美濃地方",
+      "parent": "210000"
+    },
+    "210020": {
+      "enName": "Hida Region",
+      "name": "飛騨地方",
+      "parent": "210000"
+    },
+    "220010": {
+      "enName": "Central Region",
+      "name": "中部",
+      "parent": "220000"
+    },
+    "220020": {
+      "enName": "Izu",
+      "name": "伊豆",
+      "parent": "220000"
+    },
+    "220030": {
+      "enName": "Eastern Region",
+      "name": "東部",
+      "parent": "220000"
+    },
+    "220040": {
+      "enName": "Western Region",
+      "name": "西部",
+      "parent": "220000"
+    },
+    "230010": {
+      "enName": "Western Region",
+      "name": "西部",
+      "parent": "230000"
+    },
+    "230020": {
+      "enName": "Eastern Region",
+      "name": "東部",
+      "parent": "230000"
+    },
+    "240010": {
+      "enName": "Northern Central Region",
+      "name": "北中部",
+      "parent": "240000"
+    },
+    "240020": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "240000"
+    },
+    "250010": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "250000"
+    },
+    "250020": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "250000"
+    },
+    "260010": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "260000"
+    },
+    "260020": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "260000"
+    },
+    "270000": {
+      "enName": "Osaka Prefecture",
+      "name": "大阪府",
+      "parent": "270000"
+    },
+    "280010": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "280000"
+    },
+    "280020": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "280000"
+    },
+    "290010": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "290000"
+    },
+    "290020": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "290000"
+    },
+    "300010": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "300000"
+    },
+    "300020": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "300000"
+    },
+    "310010": {
+      "enName": "Eastern Region",
+      "name": "東部",
+      "parent": "310000"
+    },
+    "310020": {
+      "enName": "Central Western Region",
+      "name": "中・西部",
+      "parent": "310000"
+    },
+    "320010": {
+      "enName": "Eastern Region",
+      "name": "東部",
+      "parent": "320000"
+    },
+    "320020": {
+      "enName": "Western Region",
+      "name": "西部",
+      "parent": "320000"
+    },
+    "320030": {
+      "enName": "Oki",
+      "name": "隠岐",
+      "parent": "320000"
+    },
+    "330010": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "330000"
+    },
+    "330020": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "330000"
+    },
+    "340010": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "340000"
+    },
+    "340020": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "340000"
+    },
+    "350010": {
+      "enName": "Western Region",
+      "name": "西部",
+      "parent": "350000"
+    },
+    "350020": {
+      "enName": "Central Region",
+      "name": "中部",
+      "parent": "350000"
+    },
+    "350030": {
+      "enName": "Eastern Region",
+      "name": "東部",
+      "parent": "350000"
+    },
+    "350040": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "350000"
+    },
+    "360010": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "360000"
+    },
+    "360020": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "360000"
+    },
+    "370000": {
+      "enName": "Kagawa Prefecture",
+      "name": "香川県",
+      "parent": "370000"
+    },
+    "380010": {
+      "enName": "Chuyo",
+      "name": "中予",
+      "parent": "380000"
+    },
+    "380020": {
+      "enName": "Toyo",
+      "name": "東予",
+      "parent": "380000"
+    },
+    "380030": {
+      "enName": "Nan-yo",
+      "name": "南予",
+      "parent": "380000"
+    },
+    "390010": {
+      "enName": "Central Region",
+      "name": "中部",
+      "parent": "390000"
+    },
+    "390020": {
+      "enName": "Eastern Region",
+      "name": "東部",
+      "parent": "390000"
+    },
+    "390030": {
+      "enName": "Western Region",
+      "name": "西部",
+      "parent": "390000"
+    },
+    "400010": {
+      "enName": "Fukuoka Region",
+      "name": "福岡地方",
+      "parent": "400000"
+    },
+    "400020": {
+      "enName": "Kitakyushu Region",
+      "name": "北九州地方",
+      "parent": "400000"
+    },
+    "400030": {
+      "enName": "Chikuho Region",
+      "name": "筑豊地方",
+      "parent": "400000"
+    },
+    "400040": {
+      "enName": "Chikugo Region",
+      "name": "筑後地方",
+      "parent": "400000"
+    },
+    "410010": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "410000"
+    },
+    "410020": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "410000"
+    },
+    "420010": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "420000"
+    },
+    "420020": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "420000"
+    },
+    "420030": {
+      "enName": "Iki Tsushima",
+      "name": "壱岐・対馬",
+      "parent": "420000"
+    },
+    "420040": {
+      "enName": "Goto",
+      "name": "五島",
+      "parent": "420000"
+    },
+    "430010": {
+      "enName": "Kumamoto Region",
+      "name": "熊本地方",
+      "parent": "430000"
+    },
+    "430020": {
+      "enName": "Aso Region",
+      "name": "阿蘇地方",
+      "parent": "430000"
+    },
+    "430030": {
+      "enName": "Amakusa Ashikita Region",
+      "name": "天草・芦北地方",
+      "parent": "430000"
+    },
+    "430040": {
+      "enName": "Kuma Region",
+      "name": "球磨地方",
+      "parent": "430000"
+    },
+    "440010": {
+      "enName": "Central Region",
+      "name": "中部",
+      "parent": "440000"
+    },
+    "440020": {
+      "enName": "Northern Region",
+      "name": "北部",
+      "parent": "440000"
+    },
+    "440030": {
+      "enName": "Western Region",
+      "name": "西部",
+      "parent": "440000"
+    },
+    "440040": {
+      "enName": "Southern Region",
+      "name": "南部",
+      "parent": "440000"
+    },
+    "450010": {
+      "enName": "Plain Area of Southern Region",
+      "name": "南部平野部",
+      "parent": "450000"
+    },
+    "450020": {
+      "enName": "Plain Area of Northern Region",
+      "name": "北部平野部",
+      "parent": "450000"
+    },
+    "450030": {
+      "enName": "Area along mountains of Southern Region",
+      "name": "南部山沿い",
+      "parent": "450000"
+    },
+    "450040": {
+      "enName": "Area along mountains of Northern Region",
+      "name": "北部山沿い",
+      "parent": "450000"
+    },
+    "460010": {
+      "enName": "Satsuma Region",
+      "name": "薩摩地方",
+      "parent": "460100"
+    },
+    "460020": {
+      "enName": "Osumi Region",
+      "name": "大隅地方",
+      "parent": "460100"
+    },
+    "460030": {
+      "enName": "Tanegashima Yakushima Region",
+      "name": "種子島・屋久島地方",
+      "parent": "460100"
+    },
+    "460040": {
+      "enName": "Amami Region",
+      "name": "奄美地方",
+      "parent": "460040"
+    },
+    "471010": {
+      "enName": "Central and Southern Main Island",
+      "name": "本島中南部",
+      "parent": "471000"
+    },
+    "471020": {
+      "enName": "Northern Main Island",
+      "name": "本島北部",
+      "parent": "471000"
+    },
+    "471030": {
+      "enName": "Kumejima",
+      "name": "久米島",
+      "parent": "471000"
+    },
+    "472000": {
+      "enName": "Daitojima Region",
+      "name": "大東島地方",
+      "parent": "472000"
+    },
+    "473000": {
+      "enName": "Miyakojima Region",
+      "name": "宮古島地方",
+      "parent": "473000"
+    },
+    "474010": {
+      "enName": "Ishigakijima Region",
+      "name": "石垣島地方",
+      "parent": "474000"
+    },
+    "474020": {
+      "enName": "Yonagunijima Region",
+      "name": "与那国島地方",
+      "parent": "474000"
+    }
+  },
+  "offices": {
+    "011000": {
+      "enName": "Soya",
+      "name": "宗谷地方"
+    },
+    "012000": {
+      "enName": "Kamikawa Rumoi",
+      "name": "上川・留萌地方"
+    },
+    "013000": {
+      "enName": "Abashiri Kitami Mombetsu",
+      "name": "網走・北見・紋別地方"
+    },
+    "014030": {
+      "enName": "Tokachi",
+      "name": "十勝地方"
+    },
+    "014100": {
+      "enName": "Kushiro Nemuro",
+      "name": "釧路・根室地方"
+    },
+    "015000": {
+      "enName": "Iburi Hidaka",
+      "name": "胆振・日高地方"
+    },
+    "016000": {
+      "enName": "Ishikari Sorachi Shiribeshi",
+      "name": "石狩・空知・後志地方"
+    },
+    "017000": {
+      "enName": "Oshima Hiyama",
+      "name": "渡島・檜山地方"
+    },
+    "020000": {
+      "enName": "Aomori",
+      "name": "青森県"
+    },
+    "030000": {
+      "enName": "Iwate",
+      "name": "岩手県"
+    },
+    "040000": {
+      "enName": "Miyagi",
+      "name": "宮城県"
+    },
+    "050000": {
+      "enName": "Akita",
+      "name": "秋田県"
+    },
+    "060000": {
+      "enName": "Yamagata",
+      "name": "山形県"
+    },
+    "070000": {
+      "enName": "Fukushima",
+      "name": "福島県"
+    },
+    "080000": {
+      "enName": "Ibaraki",
+      "name": "茨城県"
+    },
+    "090000": {
+      "enName": "Tochigi",
+      "name": "栃木県"
+    },
+    "100000": {
+      "enName": "Gunma",
+      "name": "群馬県"
+    },
+    "110000": {
+      "enName": "Saitama",
+      "name": "埼玉県"
+    },
+    "120000": {
+      "enName": "Chiba",
+      "name": "千葉県"
+    },
+    "130000": {
+      "enName": "Tokyo",
+      "name": "東京都"
+    },
+    "140000": {
+      "enName": "Kanagawa",
+      "name": "神奈川県"
+    },
+    "150000": {
+      "enName": "Niigata",
+      "name": "新潟県"
+    },
+    "160000": {
+      "enName": "Toyama",
+      "name": "富山県"
+    },
+    "170000": {
+      "enName": "Ishikawa",
+      "name": "石川県"
+    },
+    "180000": {
+      "enName": "Fukui",
+      "name": "福井県"
+    },
+    "190000": {
+      "enName": "Yamanashi",
+      "name": "山梨県"
+    },
+    "200000": {
+      "enName": "Nagano",
+      "name": "長野県"
+    },
+    "210000": {
+      "enName": "Gifu",
+      "name": "岐阜県"
+    },
+    "220000": {
+      "enName": "Shizuoka",
+      "name": "静岡県"
+    },
+    "230000": {
+      "enName": "Aichi",
+      "name": "愛知県"
+    },
+    "240000": {
+      "enName": "Mie",
+      "name": "三重県"
+    },
+    "250000": {
+      "enName": "Shiga",
+      "name": "滋賀県"
+    },
+    "260000": {
+      "enName": "Kyoto",
+      "name": "京都府"
+    },
+    "270000": {
+      "enName": "Osaka",
+      "name": "大阪府"
+    },
+    "280000": {
+      "enName": "Hyogo",
+      "name": "兵庫県"
+    },
+    "290000": {
+      "enName": "Nara",
+      "name": "奈良県"
+    },
+    "300000": {
+      "enName": "Wakayama",
+      "name": "和歌山県"
+    },
+    "310000": {
+      "enName": "Tottori",
+      "name": "鳥取県"
+    },
+    "320000": {
+      "enName": "Shimane",
+      "name": "島根県"
+    },
+    "330000": {
+      "enName": "Okayama",
+      "name": "岡山県"
+    },
+    "340000": {
+      "enName": "Hiroshima",
+      "name": "広島県"
+    },
+    "350000": {
+      "enName": "Yamaguchi",
+      "name": "山口県"
+    },
+    "360000": {
+      "enName": "Tokushima",
+      "name": "徳島県"
+    },
+    "370000": {
+      "enName": "Kagawa",
+      "name": "香川県"
+    },
+    "380000": {
+      "enName": "Ehime",
+      "name": "愛媛県"
+    },
+    "390000": {
+      "enName": "Kochi",
+      "name": "高知県"
+    },
+    "400000": {
+      "enName": "Fukuoka",
+      "name": "福岡県"
+    },
+    "410000": {
+      "enName": "Saga",
+      "name": "佐賀県"
+    },
+    "420000": {
+      "enName": "Nagasaki",
+      "name": "長崎県"
+    },
+    "430000": {
+      "enName": "Kumamoto",
+      "name": "熊本県"
+    },
+    "440000": {
+      "enName": "Oita",
+      "name": "大分県"
+    },
+    "450000": {
+      "enName": "Miyazaki",
+      "name": "宮崎県"
+    },
+    "460040": {
+      "enName": "Amami",
+      "name": "奄美地方"
+    },
+    "460100": {
+      "enName": "Kagoshima (Excluding Amami)",
+      "name": "鹿児島県（奄美地方除く）"
+    },
+    "471000": {
+      "enName": "Okinawa Main Island",
+      "name": "沖縄本島地方"
+    },
+    "472000": {
+      "enName": "Daitojima",
+      "name": "大東島地方"
+    },
+    "473000": {
+      "enName": "Miyakojima",
+      "name": "宮古島地方"
+    },
+    "474000": {
+      "enName": "Yaeyama",
+      "name": "八重山地方"
+    }
+  }
+}

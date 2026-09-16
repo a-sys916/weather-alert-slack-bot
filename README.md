@@ -1,0 +1,275 @@
+# 気象警報・台風 Slack通知ボット (weather-alert-slack-bot)
+
+気象庁（JMA）が公開している防災情報のJSONデータを定期的にチェックして、
+**大雨・暴風・洪水・高潮・波浪などの警報／注意報や、台風の最新情報**が
+更新されたときに、指定したSlackチャンネルへ自動で通知するボットです。
+
+- 通知するだけです（v1では自動リツイートなどは行いません）
+- 対象地域は日本全国です（あとから特定の都道府県だけに絞ることも可能。「地域を絞りたくなったら」の章を参照）
+- サーバーの用意は不要です。GitHub Actions という無料の仕組みで、15分おきに自動実行されます
+
+> **注意（免責事項）**: このボットが使っている気象庁のデータは、気象庁が
+> ウェブサイト上で一般公開しているJSON形式のデータで、誰でも無償でアクセス
+> できますが、**気象庁の公式API・公式サポート対象ではありません**（気象庁
+> 自身のウェブサイトが裏側で使っているのと同じデータです）。そのため
+> 予告なく形式が変わったり、一時的に取得できなくなる可能性があります。
+> 防災上の最終判断は、必ず気象庁の公式サイト（https://www.jma.go.jp/）や
+> 自治体からの情報でご確認ください。このボットは「気づくきっかけ」を
+> 提供するものです。
+
+---
+
+## 1. 全体の流れ（セットアップにあたって）
+
+大きく分けて、やることは3つだけです。
+
+1. **Slackの「Incoming Webhook」を作る**（Slack側の作業）
+2. **このプロジェクトを自分のGitHubリポジトリにpushする**
+3. **Webhook URLをGitHub Actionsの「Secret（秘密情報）」として登録する**
+
+これで、GitHub Actionsが15分おきに気象庁のデータをチェックし、変化があれば
+Slackに投稿してくれるようになります。以下、順番に説明します。
+
+---
+
+## 2. SlackのIncoming Webhookを作る
+
+Slackに投稿するための「投稿専用URL」を1つ発行します。パスワードのような
+ものなので、他人に教えたり公開のリポジトリに直接書いたりしないでください
+（このボットでは環境変数・GitHub Secretsを使うので、コードには書き込みません）。
+
+1. ブラウザで https://api.slack.com/apps を開き、`Create New App` をクリック
+2. `From scratch` を選択
+3. アプリ名（例: `気象警報ボット`）を入力し、通知したいSlackチームを選んで
+   `Create App`
+4. 左メニューの `Incoming Webhooks` をクリック
+5. 右上の `Activate Incoming Webhooks` のスイッチをONにする
+6. 下にスクロールして `Add New Webhook to Workspace` をクリック
+7. 通知を投稿したい**チャンネル**（例: `#防災通知`）を選び、`許可する`
+8. 一覧に `https://hooks.slack.com/services/xxxx/xxxx/xxxx` のような
+   URLが表示されるので、これを**コピーしておく**（後で使います）
+
+これでSlack側の準備は完了です。
+
+---
+
+## 3. このプロジェクトを自分のGitHubにpushする
+
+GitHubアカウントを持っていない場合は https://github.com/ で先に無料登録して
+ください。
+
+1. GitHubで新しい空のリポジトリを作成する（例: `weather-alert-slack-bot`）。
+   README等は追加せず、空のリポジトリとして作成してください
+   （このプロジェクトに既にREADMEが入っているため）
+2. ターミナル（コマンド入力画面）で、このプロジェクトのフォルダに移動して、
+   以下を実行します（`YOUR_GITHUB_USERNAME` などはご自身のものに置き換え）
+
+   ```bash
+   cd weather-alert-slack-bot
+   git remote add origin https://github.com/YOUR_GITHUB_USERNAME/weather-alert-slack-bot.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+   ※ このフォルダは既に `git init` 済みで、初回のコミットも作成されています。
+   上記コマンドは「GitHub上のリポジトリと接続してpushする」部分だけです。
+
+3. リポジトリを**Public（公開）にするかPrivate（非公開）にするか**は自由
+   ですが、Webhook URLはコードに書かれていない（GitHub Secretsに保存する）
+   ので、Publicにしても秘密情報が漏れることはありません。心配であれば
+   Privateを選んでください。
+
+---
+
+## 4. Webhook URLをGitHub Actionsのsecretに登録する
+
+1. GitHub上で自分のリポジトリを開く
+2. `Settings` タブ → 左メニューの `Secrets and variables` → `Actions`
+3. `New repository secret` をクリック
+4. `Name` に **`SLACK_WEBHOOK_URL`**（この名前は固定です。変更しないでください）
+5. `Secret` に、手順2でコピーしたSlackのWebhook URLを貼り付ける
+6. `Add secret` で保存
+
+これで設定は完了です。GitHub Actionsが自動的にこのSecretを読み込んで
+Slackに投稿できるようになります。
+
+---
+
+## 5. 動作確認
+
+### GitHub Actions上で手動実行して試す
+
+1. GitHubのリポジトリ画面で `Actions` タブを開く
+2. 左側の `JMA weather alerts to Slack` をクリック
+3. 右側の `Run workflow` ボタン → もう一度 `Run workflow` をクリック
+4. 実行が終わったらログを開いて、エラーが出ていないか確認
+5. 現在、日本のどこかで大雨・暴風・洪水・高潮・波浪関連の警報・注意報や
+   台風情報が出ていれば、Slackチャンネルに通知が届きます
+   （何も出ていない場合は「変化なし」で通知は届きません。それが正常な
+   動作です）
+
+### 自分のパソコンで試す（任意・エンジニア向け）
+
+Python 3.9以降がインストールされていれば、次のように実行できます。
+
+```bash
+cd weather-alert-slack-bot
+python3 main.py
+```
+
+環境変数 `SLACK_WEBHOOK_URL` を設定していない場合は、Slackには投稿されず、
+代わりに送信予定のメッセージ内容がターミナルに表示されます（動作確認用の
+「ドライラン」モード）。実際にSlackへ投稿して試したい場合は:
+
+```bash
+export SLACK_WEBHOOK_URL="https://hooks.slack.com/services/xxxx/xxxx/xxxx"
+python3 main.py
+```
+
+---
+
+## 6. 通知の仕組み（何が届くのか）
+
+Slackには、以下がひとめで分かるように投稿されます。
+
+- **いつ**: 気象庁が発表した日時
+- **どこ**: 都道府県 ＋ 地方名（例: 東京都 東京地方）
+- **どの程度**: 🟡注意報 / 🟠警報 / 🔴特別警報 の絵文字と警報名
+
+通知が来るのは、次の3つのケースだけです（同じ内容を何度も繰り返し
+通知しないようにしています）。
+
+1. 新しく警報・注意報が発表されたとき
+2. レベルが変わったとき（注意報 → 警報 → 特別警報、またはその逆）
+3. 警報・注意報が解除されたとき
+
+台風についても、新しく発生した台風や、進路予報が更新されたときに通知します。
+
+---
+
+## 7. ポーリング間隔（何分おきにチェックするか）を変更したい場合
+
+`.github/workflows/weather-alerts.yml` の中の、以下の行を編集します。
+
+```yaml
+schedule:
+  - cron: "*/15 * * * *" # 15分おき
+```
+
+例えば10分おきにしたい場合は `*/10 * * * *` に変更してください。
+GitHub Actionsの無料枠には実行時間の上限があるため、あまり短くしすぎ
+ない（5分未満は避ける）ことをおすすめします。また、GitHubの仕組み上、
+アクセスが多い時間帯は実行が数分遅れることがあります。
+
+---
+
+## 8. 地域を絞りたくなったら（将来の拡張）
+
+現在は日本全国を対象にしていますが、「東京都と神奈川県だけ知りたい」
+といった場合は、`jma_bot/config.py` の中の以下の部分を編集するだけで
+対応できます。
+
+```python
+# 例: 東京都と神奈川県だけを監視したい場合
+OFFICE_CODE_FILTER: list[str] = ["130000", "140000"]
+```
+
+都道府県コードの一覧は `data/area_master.json` の `"offices"` の中に
+入っています（キーがコード、`"name"` が都道府県名です）。
+
+---
+
+## 9. 通知する警報の種類を調整したい場合
+
+`jma_bot/config.py` の `NOTIFY_CATEGORIES` という変数で、通知対象の
+カテゴリー（大雨・暴風・暴風雪・洪水・高潮・波浪）を指定しています。
+例えば「暴風雪（大雪を伴う嵐）はうるさいので外したい」といった場合は、
+このリストから該当のカテゴリーを削除してください。個々の警報コードの
+対応表（`WARNING_CODE_TABLE`）も同じファイルにあるので、コードと名前の
+対応を見ながら調整できます。
+
+---
+
+## 10. 将来、常時稼働のサーバーに移行したくなったら（AWS Lambdaの例）
+
+GitHub Actionsは無料で手軽ですが、「もっと短い間隔で確実に動かしたい」
+「他のサービスと連携したい」といった場合は、常時稼働のインフラに移行する
+こともできます。設計上、このリポジトリのコードはそのまま使い回せます。
+
+- `main.py` の `run_once()` 関数が1回分の処理のすべてです。AWS Lambdaの
+  ハンドラー関数から `run_once()` を呼び出すだけで移行できます
+- スケジュール実行は Amazon EventBridge（旧CloudWatch Events）のルールで
+  `rate(15 minutes)` のように設定します
+- `SLACK_WEBHOOK_URL` はLambdaの環境変数として設定します
+- `state/seen.json` によるファイルベースの状態管理は、Lambda環境では
+  そのままでは使えません（実行のたびに環境がリセットされるため）。
+  S3の1オブジェクトとして読み書きするか、DynamoDBの1レコードに置き換える
+  必要があります
+
+（v1はこの移行を前提とした設計にはなっていますが、実際のLambda対応
+コードそのものは含まれていません。あくまで「今後移行しやすいように」
+という設計方針です。）
+
+---
+
+## 11. Slackの通知方法をもっとリッチにしたい場合
+
+v1はSlackの「Incoming Webhook」（投稿専用URL）を使っています。設定が
+一番簡単だからです。将来、次のようなことをしたくなったら、Slack Bot
+Token（`chat.postMessage` API）への切り替えを検討してください。
+
+- 同じスレッドに続けて返信したい
+- 特定のメッセージにリアクションを付けたい
+- 複数チャンネルへの投稿を1つのアプリで管理したい
+
+その場合は `jma_bot/slack_notifier.py` の `send_message()` の中身を、
+Slack公式の `slack_sdk` ライブラリを使った実装に差し替えることになります。
+
+---
+
+## 12. プロジェクトの構成
+
+```
+weather-alert-slack-bot/
+├── main.py                      # エントリーポイント（1回分の処理をすべて実行）
+├── requirements.txt              # 依存ライブラリ（標準ライブラリのみのため空）
+├── jma_bot/
+│   ├── config.py                 # エンドポイントURL・警報コード表・対象カテゴリなどの設定
+│   ├── jma_client.py             # 気象庁データの取得・パース
+│   ├── formatter.py              # Slack Block Kit メッセージの組み立て
+│   ├── slack_notifier.py         # Slackへの送信（未設定時は標準出力に表示）
+│   └── state.py                  # 通知済みかどうかの判定・状態の読み書き
+├── data/
+│   └── area_master.json          # 地域コード→地名（都道府県・地方）の対応表（キャッシュ）
+├── state/
+│   └── seen.json                 # 直近に通知した警報・台風の状態（GitHub Actionsが自動更新）
+├── scripts/
+│   └── fetch_area_master.py      # area_master.json を最新化するスクリプト
+└── .github/workflows/
+    └── weather-alerts.yml        # GitHub Actionsのスケジュール実行設定
+```
+
+---
+
+## 13. 開発時に確認したこと（参考情報）
+
+このボットが使っている気象庁のエンドポイントは、2026年5月29日の気象庁の
+防災情報の仕様変更（「新たな防災気象情報の運用について」）に合わせて、
+2026年9月時点で実際にアクセスして動作確認したものです。ネット上の古い
+記事等で紹介されている以下の**古いエンドポイントは、この変更以降データが
+更新されなくなっている（固まっている）ことを確認済み**のため、本プロジェクト
+では使用していません。
+
+- （旧）`https://www.jma.go.jp/bosai/warning/data/warning/{地域コード}.json`
+- （旧）`https://www.jma.go.jp/bosai/information/data/typhoon.json`
+
+代わりに、気象庁の公式サイトが実際に読み込んでいる以下のエンドポイントを
+使用しています。
+
+- 警報・注意報: `https://www.jma.go.jp/bosai/warning/data/r8/{地域コード}.json`
+- 現在の台風一覧: `https://www.jma.go.jp/bosai/typhoon/data/targetTc.json`
+- 台風の実況・進路予報: `https://www.jma.go.jp/bosai/typhoon/data/{台風ID}/forecast.json`
+
+これらも気象庁の公式・保証されたAPIではないため、将来また形式が変わる
+可能性があります。ボットが急に通知を送らなくなった場合は、GitHub Actions
+の実行ログにエラーが出ていないか確認してください。

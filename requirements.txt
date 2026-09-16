@@ -1,0 +1,7 @@
+# This project intentionally uses only the Python standard library
+# (urllib, json, dataclasses, etc.) -- no third-party packages are required.
+#
+# This file is kept (and still referenced by the GitHub Actions workflow)
+# so that adding a dependency later (e.g. `requests`, or the official
+# `slack_sdk` if you switch from a webhook to a bot token) is a one-line
+# change with no other setup needed.

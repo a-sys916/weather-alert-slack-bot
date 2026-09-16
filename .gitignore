@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.DS_Store
+
+# NOTE: state/seen.json is intentionally NOT ignored -- the GitHub Actions
+# workflow commits it back to the repo after each run so the bot remembers
+# what it already notified about between scheduled runs.
