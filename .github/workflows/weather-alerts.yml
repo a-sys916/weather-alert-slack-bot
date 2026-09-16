@@ -2,13 +2,15 @@ name: JMA weather alerts to Slack
 
 on:
   schedule:
-    # Every 15 minutes. GitHub Actions cron runs in UTC; this has no
-    # dependency on timezone since it's a fixed interval, not a time of day.
+    # Hourly, 10:00-19:00 JST only (JST = UTC+9, so JST 10:00-19:00 is UTC
+    # 01:00-10:00). GitHub Actions cron is always UTC, hence the shifted
+    # hours below -- "0 1-10 * * *" fires once on the hour for UTC hours
+    # 1 through 10 inclusive, i.e. JST 10,11,...,19.
     # Note: GitHub may delay scheduled runs by a few minutes under load --
     # this is a GitHub Actions limitation, not something this workflow can
     # control.
-    - cron: "*/15 * * * *"
-  workflow_dispatch: {} # lets you trigger a run manually from the Actions tab
+    - cron: "0 1-10 * * *"
+  workflow_dispatch: {} # lets you trigger a run manually any time from the Actions tab, regardless of the schedule window above
 
 # Avoid two overlapping runs racing to commit state/seen.json.
 concurrency:
