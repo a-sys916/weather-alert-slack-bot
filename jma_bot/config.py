@@ -272,3 +272,102 @@ REGION_REFERENCE_POINTS: dict[str, tuple[float, float]] = {
     "九州": (33.5904, 130.4017),  # 福岡
     "沖縄": (26.2124, 127.6809),  # 那覇
 }
+
+# Fixed geographic order the formatter renders region sections in.
+REGION_ORDER: list[str] = list(REGION_REFERENCE_POINTS.keys())
+
+# ---------------------------------------------------------------------------
+# Office code -> region grouping, for the formatter's per-region sections
+#
+# This is a STATIC geographic/administrative fact (which of Japan's 9
+# traditional 地方 each prefecture belongs to), NOT something read from any
+# JMA API -- built by enumerating every office code in data/area_master.json's
+# "offices" section (58 entries, verified 2026-09-16) against its prefecture
+# and the standard 9-region breakdown already used above for
+# REGION_REFERENCE_POINTS. A few prefectures are split across multiple office
+# codes (Hokkaido: 8 sub-region offices; Kagoshima: 奄美地方 + the rest;
+# Okinawa: 4 sub-island offices) -- all such codes map to the same region.
+# ---------------------------------------------------------------------------
+
+OFFICE_TO_REGION: dict[str, str] = {
+    # 北海道 (no single prefecture-level office; 8 sub-region offices)
+    "011000": "北海道",
+    "012000": "北海道",
+    "013000": "北海道",
+    "014030": "北海道",
+    "014100": "北海道",
+    "015000": "北海道",
+    "016000": "北海道",
+    "017000": "北海道",
+    # 東北
+    "020000": "東北",  # 青森県
+    "030000": "東北",  # 岩手県
+    "040000": "東北",  # 宮城県
+    "050000": "東北",  # 秋田県
+    "060000": "東北",  # 山形県
+    "070000": "東北",  # 福島県
+    # 関東
+    "080000": "関東",  # 茨城県
+    "090000": "関東",  # 栃木県
+    "100000": "関東",  # 群馬県
+    "110000": "関東",  # 埼玉県
+    "120000": "関東",  # 千葉県
+    "130000": "関東",  # 東京都
+    "140000": "関東",  # 神奈川県
+    # 中部 (甲信越含む)
+    "150000": "中部",  # 新潟県
+    "160000": "中部",  # 富山県
+    "170000": "中部",  # 石川県
+    "180000": "中部",  # 福井県
+    "190000": "中部",  # 山梨県
+    "200000": "中部",  # 長野県
+    "210000": "中部",  # 岐阜県
+    "220000": "中部",  # 静岡県
+    "230000": "中部",  # 愛知県
+    # 近畿
+    "240000": "近畿",  # 三重県
+    "250000": "近畿",  # 滋賀県
+    "260000": "近畿",  # 京都府
+    "270000": "近畿",  # 大阪府
+    "280000": "近畿",  # 兵庫県
+    "290000": "近畿",  # 奈良県
+    "300000": "近畿",  # 和歌山県
+    # 中国
+    "310000": "中国",  # 鳥取県
+    "320000": "中国",  # 島根県
+    "330000": "中国",  # 岡山県
+    "340000": "中国",  # 広島県
+    "350000": "中国",  # 山口県
+    # 四国
+    "360000": "四国",  # 徳島県
+    "370000": "四国",  # 香川県
+    "380000": "四国",  # 愛媛県
+    "390000": "四国",  # 高知県
+    # 九州 (鹿児島県は奄美地方と分かれているが、どちらも同じ県 -> 同じ地方)
+    "400000": "九州",  # 福岡県
+    "410000": "九州",  # 佐賀県
+    "420000": "九州",  # 長崎県
+    "430000": "九州",  # 熊本県
+    "440000": "九州",  # 大分県
+    "450000": "九州",  # 宮崎県
+    "460040": "九州",  # 鹿児島県 奄美地方
+    "460100": "九州",  # 鹿児島県（奄美地方除く）
+    # 沖縄 (4 sub-island offices)
+    "471000": "沖縄",  # 沖縄本島地方
+    "472000": "沖縄",  # 大東島地方
+    "473000": "沖縄",  # 宮古島地方
+    "474000": "沖縄",  # 八重山地方
+}
+
+# Fallback bucket for an office code that's missing from OFFICE_TO_REGION
+# (e.g. a future JMA area reorganization adds a new office code before this
+# table is updated). Rendered as its own section rather than silently
+# dropping the notification -- see formatter._region_for_office.
+UNKNOWN_REGION_LABEL = "その他"
+
+# Slack's practical block-count limit is 50 per chat.postMessage/incoming-
+# webhook payload. main.py may concatenate this section's blocks with
+# typhoon blocks and inter-section dividers, so each of build_warning_blocks
+# / build_early_warning_blocks caps its OWN block count comfortably below 50
+# to leave headroom for the others.
+MAX_BLOCKS_PER_SECTION = 40
