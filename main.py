@@ -47,12 +47,21 @@ def run_once() -> int:
 
     warning_changes = state.diff_warnings(warning_entries, saved_state)
     typhoon_changes = state.diff_typhoons(typhoons, saved_state)
-    early_warning_changes = state.diff_early_warnings(early_warning_entries, saved_state)
+    all_early_warning_changes = state.diff_early_warnings(early_warning_entries, saved_state)
+
+    # Only "高" (high) likelihood is worth interrupting for -- "中" (medium)
+    # fires too often to be useful, and a cleared entry (level=None) never
+    # matches either, so "risk went away" updates stay silent too. The full,
+    # unfiltered diff above is still what gets saved to state, so dedup keeps
+    # working correctly regardless of this notification-only filter.
+    early_warning_changes = [c for c in all_early_warning_changes if c.level in config.NOTIFY_EARLY_WARNING_LEVELS]
+
     logger.info(
-        "%d warning change(s), %d typhoon change(s), %d early-warning change(s) to notify",
+        "%d warning change(s), %d typhoon change(s), %d early-warning change(s) to notify (%d before 高-only filter)",
         len(warning_changes),
         len(typhoon_changes),
         len(early_warning_changes),
+        len(all_early_warning_changes),
     )
 
     if not warning_changes and not typhoon_changes and not early_warning_changes:

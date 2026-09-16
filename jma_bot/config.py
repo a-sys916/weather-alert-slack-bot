@@ -252,6 +252,15 @@ EARLY_WARNING_AREA_NAME_OVERRIDES: dict[str, str] = {
 LIKELIHOOD_RANK = {"中": 1, "高": 2}
 LIKELIHOOD_EMOJI = {"中": "👀", "高": "🔎"}
 
+# Which likelihood level(s) actually get posted to Slack. "中" (medium) fires
+# for most areas most of the time and was judged too noisy to be worth a
+# notification -- only "高" (high) is surfaced. This also silently covers
+# "解消" (cleared, level=None): a cleared entry never matches this set, so it
+# never generates a notification (the user found "risk went away" updates
+# not worth interrupting for) -- state.py still tracks clears internally so
+# dedup keeps working correctly if the same risk reappears later.
+NOTIFY_EARLY_WARNING_LEVELS = {"高"}
+
 # ---------------------------------------------------------------------------
 # Representative reference points for rough typhoon-distance display
 #
