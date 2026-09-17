@@ -59,14 +59,6 @@
     "450000:450020:heavy_rain": {
       "earliest_time": "2026-09-18T06:00:00+09:00",
       "level": "中"
-    },
-    "471000:471010:heavy_rain": {
-      "earliest_time": "2026-09-17T12:00:00+09:00",
-      "level": "中"
-    },
-    "471000:471020:heavy_rain": {
-      "earliest_time": "2026-09-17T12:00:00+09:00",
-      "level": "中"
     }
   },
   "typhoons": {
