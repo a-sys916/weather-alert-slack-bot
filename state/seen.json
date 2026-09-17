@@ -36,16 +36,8 @@
       "earliest_time": "2026-09-20T00:00:00+09:00",
       "level": "中"
     },
-    "140000:140010:heavy_rain": {
-      "earliest_time": "2026-09-16T18:00:00+09:00",
-      "level": "中"
-    },
     "190000:190000:heavy_rain": {
       "earliest_time": "2026-09-20T00:00:00+09:00",
-      "level": "中"
-    },
-    "190000:190010:heavy_rain": {
-      "earliest_time": "2026-09-16T18:00:00+09:00",
       "level": "中"
     },
     "200000:200000:heavy_rain": {
@@ -56,40 +48,20 @@
       "earliest_time": "2026-09-21T00:00:00+09:00",
       "level": "中"
     },
-    "220000:220010:heavy_rain": {
-      "earliest_time": "2026-09-16T18:00:00+09:00",
+    "471000:471010:heavy_rain": {
+      "earliest_time": "2026-09-17T12:00:00+09:00",
       "level": "中"
     },
-    "220000:220020:heavy_rain": {
-      "earliest_time": "2026-09-16T18:00:00+09:00",
-      "level": "中"
-    },
-    "220000:220030:heavy_rain": {
-      "earliest_time": "2026-09-16T18:00:00+09:00",
-      "level": "中"
-    },
-    "220000:220040:heavy_rain": {
-      "earliest_time": "2026-09-16T18:00:00+09:00",
-      "level": "中"
-    },
-    "230000:230010:heavy_rain": {
-      "earliest_time": "2026-09-16T18:00:00+09:00",
-      "level": "中"
-    },
-    "230000:230020:heavy_rain": {
-      "earliest_time": "2026-09-16T18:00:00+09:00",
-      "level": "中"
-    },
-    "460100:460010:heavy_rain": {
-      "earliest_time": "2026-09-16T18:00:00+09:00",
+    "471000:471020:heavy_rain": {
+      "earliest_time": "2026-09-17T12:00:00+09:00",
       "level": "中"
     }
   },
   "typhoons": {
     "TC2630": {
-      "category": "TD",
-      "forecast_issue_time": "2026-09-16T19:10:00+09:00",
-      "issue_time": "2026-09-16T19:10:00+09:00"
+      "category": "TS",
+      "forecast_issue_time": "2026-09-17T09:45:00+09:00",
+      "issue_time": "2026-09-17T09:45:00+09:00"
     }
   },
   "warnings": {
@@ -133,40 +105,45 @@
       "status": "発表",
       "warning_code": "10"
     },
-    "230000:230010:10": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "10"
-    },
     "230000:230020:10": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "10"
     },
-    "270000:270000:10": {
+    "320000:320010:15": {
       "level": "注意報",
       "status": "発表",
-      "warning_code": "10"
+      "warning_code": "15"
     },
     "400000:400010:15": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "15"
     },
+    "400000:400010:16": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "16"
+    },
     "400000:400020:15": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "15"
+    },
+    "400000:400020:16": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "16"
     },
     "410000:410020:15": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "15"
     },
-    "420000:420010:15": {
+    "410000:410020:16": {
       "level": "注意報",
       "status": "発表",
-      "warning_code": "15"
+      "warning_code": "16"
     },
     "420000:420020:15": {
       "level": "注意報",
@@ -192,11 +169,6 @@
       "level": "注意報",
       "status": "発表",
       "warning_code": "16"
-    },
-    "430000:430030:15": {
-      "level": "注意報",
-      "status": "発表",
-      "warning_code": "15"
     },
     "460100:460010:10": {
       "level": "注意報",
