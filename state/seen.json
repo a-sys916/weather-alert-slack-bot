@@ -64,8 +64,8 @@
   "typhoons": {
     "TC2630": {
       "category": "STS",
-      "forecast_issue_time": "2026-09-17T15:45:00+09:00",
-      "issue_time": "2026-09-17T15:45:00+09:00"
+      "forecast_issue_time": "2026-09-17T18:45:00+09:00",
+      "issue_time": "2026-09-17T18:45:00+09:00"
     }
   },
   "warnings": {
@@ -169,21 +169,6 @@
       "status": "発表",
       "warning_code": "15"
     },
-    "320000:320010:15": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "15"
-    },
-    "320000:320020:15": {
-      "level": "注意報",
-      "status": "発表",
-      "warning_code": "15"
-    },
-    "320000:320030:15": {
-      "level": "注意報",
-      "status": "発表",
-      "warning_code": "15"
-    },
     "350000:350010:15": {
       "level": "注意報",
       "status": "継続",
@@ -203,6 +188,21 @@
       "level": "注意報",
       "status": "継続",
       "warning_code": "15"
+    },
+    "390000:390010:16": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "16"
+    },
+    "390000:390020:16": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "16"
+    },
+    "390000:390030:16": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "16"
     },
     "400000:400010:15": {
       "level": "注意報",
