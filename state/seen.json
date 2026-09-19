@@ -180,8 +180,8 @@
   "typhoons": {
     "TC2630": {
       "category": "STS",
-      "forecast_issue_time": "2026-09-19T09:50:00+09:00",
-      "issue_time": "2026-09-19T09:50:00+09:00"
+      "forecast_issue_time": "2026-09-19T12:45:00+09:00",
+      "issue_time": "2026-09-19T12:45:00+09:00"
     }
   },
   "warnings": {
@@ -351,6 +351,11 @@
       "warning_code": "16"
     },
     "360000:360020:16": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "16"
+    },
+    "380000:380030:16": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "16"
