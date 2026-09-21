@@ -136,8 +136,8 @@
   "typhoons": {
     "TC2630": {
       "category": "TY",
-      "forecast_issue_time": "2026-09-21T10:45:00+09:00",
-      "issue_time": "2026-09-21T10:45:00+09:00"
+      "forecast_issue_time": "2026-09-21T11:45:00+09:00",
+      "issue_time": "2026-09-21T11:45:00+09:00"
     }
   },
   "warnings": {
@@ -240,6 +240,11 @@
       "level": "注意報",
       "status": "継続",
       "warning_code": "16"
+    },
+    "120000:120030:03": {
+      "level": "警報",
+      "status": "継続",
+      "warning_code": "03"
     },
     "120000:120030:05": {
       "level": "警報",
@@ -410,6 +415,11 @@
       "level": "注意報",
       "status": "発表",
       "warning_code": "16"
+    },
+    "220000:220020:03": {
+      "level": "警報",
+      "status": "発表",
+      "warning_code": "03"
     },
     "220000:220020:15": {
       "level": "注意報",
