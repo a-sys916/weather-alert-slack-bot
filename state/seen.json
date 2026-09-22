@@ -1,18 +1,5 @@
 {
-  "early_warnings": {
-    "120000:120010:heavy_rain": {
-      "earliest_time": "2026-09-22T12:00:00+09:00",
-      "level": "高"
-    },
-    "120000:120020:heavy_rain": {
-      "earliest_time": "2026-09-22T12:00:00+09:00",
-      "level": "中"
-    },
-    "120000:120030:heavy_rain": {
-      "earliest_time": "2026-09-22T12:00:00+09:00",
-      "level": "高"
-    }
-  },
+  "early_warnings": {},
   "typhoons": {
     "TC2630": {
       "category": "STS",
@@ -153,7 +140,7 @@
     },
     "120000:120010:10": {
       "level": "注意報",
-      "status": "警報から注意報",
+      "status": "継続",
       "warning_code": "10"
     },
     "120000:120010:15": {
@@ -190,11 +177,6 @@
       "level": "警報",
       "status": "発表",
       "warning_code": "05"
-    },
-    "120000:120030:10": {
-      "level": "注意報",
-      "status": "警報から注意報",
-      "warning_code": "10"
     },
     "120000:120030:15": {
       "level": "注意報",
