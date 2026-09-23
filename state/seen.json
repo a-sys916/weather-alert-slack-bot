@@ -8,12 +8,17 @@
     },
     "TC2632": {
       "category": "TD",
-      "forecast_issue_time": "2026-09-23T13:10:00+09:00",
-      "issue_time": "2026-09-23T13:10:00+09:00"
+      "forecast_issue_time": "2026-09-23T16:05:00+09:00",
+      "issue_time": "2026-09-23T16:05:00+09:00"
     }
   },
   "warnings": {
     "011000:011000:15": {
+      "level": "注意報",
+      "status": "継続",
+      "warning_code": "15"
+    },
+    "012000:012020:15": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "15"
