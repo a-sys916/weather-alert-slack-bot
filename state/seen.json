@@ -1,15 +1,10 @@
 {
   "early_warnings": {},
   "typhoons": {
-    "TC2630": {
-      "category": "LOW",
-      "forecast_issue_time": "2026-09-22T21:45:00+09:00",
-      "issue_time": "2026-09-22T21:45:00+09:00"
-    },
     "TC2632": {
-      "category": "TD",
-      "forecast_issue_time": "2026-09-23T19:10:00+09:00",
-      "issue_time": "2026-09-23T19:10:00+09:00"
+      "category": "TS",
+      "forecast_issue_time": "2026-09-24T09:50:00+09:00",
+      "issue_time": "2026-09-24T09:50:00+09:00"
     }
   },
   "warnings": {
@@ -19,6 +14,26 @@
       "warning_code": "15"
     },
     "012000:012020:15": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "15"
+    },
+    "015000:015010:15": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "15"
+    },
+    "016000:016010:15": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "15"
+    },
+    "016000:016020:15": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "15"
+    },
+    "016000:016030:15": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "15"
