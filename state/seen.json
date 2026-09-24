@@ -3,8 +3,8 @@
   "typhoons": {
     "TC2632": {
       "category": "TS",
-      "forecast_issue_time": "2026-09-24T12:45:00+09:00",
-      "issue_time": "2026-09-24T12:45:00+09:00"
+      "forecast_issue_time": "2026-09-24T15:50:00+09:00",
+      "issue_time": "2026-09-24T15:50:00+09:00"
     }
   },
   "warnings": {
@@ -13,7 +13,7 @@
       "status": "継続",
       "warning_code": "15"
     },
-    "012000:012020:15": {
+    "014030:014030:15": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "15"
