@@ -1,5 +1,38 @@
 {
-  "early_warnings": {},
+  "early_warnings": {
+    "080000:080010:heavy_rain": {
+      "earliest_time": "2026-09-26T06:00:00+09:00",
+      "level": "中"
+    },
+    "080000:080020:heavy_rain": {
+      "earliest_time": "2026-09-26T06:00:00+09:00",
+      "level": "中"
+    },
+    "090000:090010:heavy_rain": {
+      "earliest_time": "2026-09-26T00:00:00+09:00",
+      "level": "中"
+    },
+    "090000:090020:heavy_rain": {
+      "earliest_time": "2026-09-26T00:00:00+09:00",
+      "level": "中"
+    },
+    "120000:120010:heavy_rain": {
+      "earliest_time": "2026-09-26T06:00:00+09:00",
+      "level": "中"
+    },
+    "120000:120020:heavy_rain": {
+      "earliest_time": "2026-09-26T06:00:00+09:00",
+      "level": "中"
+    },
+    "120000:120030:heavy_rain": {
+      "earliest_time": "2026-09-26T06:00:00+09:00",
+      "level": "中"
+    },
+    "471000:471000:heavy_rain": {
+      "earliest_time": "2026-09-28T00:00:00+09:00",
+      "level": "中"
+    }
+  },
   "typhoons": {
     "TC2632": {
       "category": "TS",
@@ -541,6 +574,11 @@
     "460100:460030:16": {
       "level": "注意報",
       "status": "継続",
+      "warning_code": "16"
+    },
+    "473000:473000:16": {
+      "level": "注意報",
+      "status": "発表",
       "warning_code": "16"
     }
   }
