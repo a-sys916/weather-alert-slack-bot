@@ -72,8 +72,8 @@
   "typhoons": {
     "TC2632": {
       "category": "TY",
-      "forecast_issue_time": "2026-09-27T10:50:00+09:00",
-      "issue_time": "2026-09-27T10:50:00+09:00"
+      "forecast_issue_time": "2026-09-27T11:45:00+09:00",
+      "issue_time": "2026-09-27T11:45:00+09:00"
     }
   },
   "warnings": {
@@ -606,6 +606,11 @@
       "level": "警報",
       "status": "継続",
       "warning_code": "03"
+    },
+    "440000:440010:10": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "10"
     },
     "440000:440020:10": {
       "level": "注意報",
