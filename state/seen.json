@@ -3,13 +3,13 @@
   "typhoons": {
     "TC2632": {
       "category": "TS",
-      "forecast_issue_time": "2026-10-01T09:45:00+09:00",
-      "issue_time": "2026-10-01T09:45:00+09:00"
+      "forecast_issue_time": "2026-10-01T12:45:00+09:00",
+      "issue_time": "2026-10-01T12:45:00+09:00"
     },
     "TC2633": {
       "category": "TS",
-      "forecast_issue_time": "2026-10-01T10:05:00+09:00",
-      "issue_time": "2026-10-01T10:05:00+09:00"
+      "forecast_issue_time": "2026-10-01T13:05:00+09:00",
+      "issue_time": "2026-10-01T13:05:00+09:00"
     }
   },
   "warnings": {
@@ -102,11 +102,6 @@
       "level": "警報",
       "status": "継続",
       "warning_code": "03"
-    },
-    "016000:016020:15": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "15"
     },
     "016000:016030:15": {
       "level": "注意報",
