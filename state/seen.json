@@ -13,8 +13,8 @@
     },
     "TC2633": {
       "category": "STS",
-      "forecast_issue_time": "2026-10-02T15:45:00+09:00",
-      "issue_time": "2026-10-02T15:45:00+09:00"
+      "forecast_issue_time": "2026-10-02T18:45:00+09:00",
+      "issue_time": "2026-10-02T18:45:00+09:00"
     }
   },
   "warnings": {
@@ -414,11 +414,6 @@
       "warning_code": "15"
     },
     "190000:190010:10": {
-      "level": "注意報",
-      "status": "発表",
-      "warning_code": "10"
-    },
-    "220000:220010:10": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "10"
