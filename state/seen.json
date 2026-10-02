@@ -1,5 +1,10 @@
 {
-  "early_warnings": {},
+  "early_warnings": {
+    "130000:130040:heavy_rain": {
+      "earliest_time": "2026-10-06T00:00:00+09:00",
+      "level": "中"
+    }
+  },
   "typhoons": {
     "TC2632": {
       "category": "LOW",
@@ -68,6 +73,11 @@
       "status": "危険警報から警報",
       "warning_code": "03"
     },
+    "016000:016010:05": {
+      "level": "警報",
+      "status": "発表",
+      "warning_code": "05"
+    },
     "016000:016010:10": {
       "level": "注意報",
       "status": "発表",
@@ -85,7 +95,7 @@
     },
     "016000:016020:15": {
       "level": "注意報",
-      "status": "発表",
+      "status": "継続",
       "warning_code": "15"
     },
     "016000:016030:15": {
