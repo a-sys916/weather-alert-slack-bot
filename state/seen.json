@@ -1,19 +1,10 @@
 {
-  "early_warnings": {
-    "130000:130040:heavy_rain": {
-      "earliest_time": "2026-10-06T00:00:00+09:00",
-      "level": "中"
-    },
-    "473000:473000:heavy_rain": {
-      "earliest_time": "2026-10-04T12:00:00+09:00",
-      "level": "中"
-    }
-  },
+  "early_warnings": {},
   "typhoons": {
     "TC2633": {
       "category": "TY",
-      "forecast_issue_time": "2026-10-04T12:45:00+09:00",
-      "issue_time": "2026-10-04T12:45:00+09:00"
+      "forecast_issue_time": "2026-10-04T18:45:00+09:00",
+      "issue_time": "2026-10-04T18:45:00+09:00"
     }
   },
   "warnings": {
@@ -192,6 +183,11 @@
       "status": "継続",
       "warning_code": "10"
     },
+    "080000:080020:16": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "16"
+    },
     "090000:090010:15": {
       "level": "注意報",
       "status": "発表",
@@ -247,6 +243,11 @@
       "status": "発表",
       "warning_code": "10"
     },
+    "120000:120030:15": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "15"
+    },
     "120000:120030:16": {
       "level": "注意報",
       "status": "継続",
@@ -261,6 +262,11 @@
       "level": "注意報",
       "status": "継続",
       "warning_code": "10"
+    },
+    "130000:130020:15": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "15"
     },
     "130000:130020:16": {
       "level": "注意報",
@@ -317,6 +323,11 @@
       "status": "継続",
       "warning_code": "10"
     },
+    "140000:140010:15": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "15"
+    },
     "140000:140010:16": {
       "level": "注意報",
       "status": "継続",
@@ -336,6 +347,11 @@
       "level": "注意報",
       "status": "継続",
       "warning_code": "10"
+    },
+    "140000:140020:15": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "15"
     },
     "140000:140020:16": {
       "level": "注意報",
@@ -411,6 +427,11 @@
       "level": "注意報",
       "status": "継続",
       "warning_code": "10"
+    },
+    "220000:220020:15": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "15"
     },
     "220000:220020:16": {
       "level": "注意報",
@@ -583,6 +604,11 @@
       "warning_code": "16"
     },
     "390000:390020:15": {
+      "level": "注意報",
+      "status": "継続",
+      "warning_code": "15"
+    },
+    "390000:390030:15": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "15"
@@ -761,11 +787,6 @@
       "level": "注意報",
       "status": "継続",
       "warning_code": "15"
-    },
-    "473000:473000:10": {
-      "level": "注意報",
-      "status": "発表",
-      "warning_code": "10"
     }
   }
 }
