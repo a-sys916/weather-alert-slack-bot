@@ -8,13 +8,13 @@
     },
     "TC2634": {
       "category": "STS",
-      "forecast_issue_time": "2026-10-08T10:05:00+09:00",
-      "issue_time": "2026-10-08T10:05:00+09:00"
+      "forecast_issue_time": "2026-10-08T13:05:00+09:00",
+      "issue_time": "2026-10-08T13:05:00+09:00"
     },
     "TC2635": {
       "category": "STS",
-      "forecast_issue_time": "2026-10-08T09:45:00+09:00",
-      "issue_time": "2026-10-08T09:45:00+09:00"
+      "forecast_issue_time": "2026-10-08T12:50:00+09:00",
+      "issue_time": "2026-10-08T12:50:00+09:00"
     }
   },
   "warnings": {
@@ -67,6 +67,11 @@
       "level": "注意報",
       "status": "継続",
       "warning_code": "16"
+    },
+    "014100:014020:15": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "15"
     },
     "014100:014020:16": {
       "level": "注意報",
