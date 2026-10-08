@@ -8,13 +8,13 @@
     },
     "TC2634": {
       "category": "STS",
-      "forecast_issue_time": "2026-10-08T13:05:00+09:00",
-      "issue_time": "2026-10-08T13:05:00+09:00"
+      "forecast_issue_time": "2026-10-08T16:05:00+09:00",
+      "issue_time": "2026-10-08T16:05:00+09:00"
     },
     "TC2635": {
       "category": "STS",
-      "forecast_issue_time": "2026-10-08T12:50:00+09:00",
-      "issue_time": "2026-10-08T12:50:00+09:00"
+      "forecast_issue_time": "2026-10-08T15:45:00+09:00",
+      "issue_time": "2026-10-08T15:45:00+09:00"
     }
   },
   "warnings": {
@@ -28,30 +28,10 @@
       "status": "継続",
       "warning_code": "15"
     },
-    "012000:012020:15": {
-      "level": "注意報",
-      "status": "発表",
-      "warning_code": "15"
-    },
-    "013000:013010:15": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "15"
-    },
-    "013000:013030:15": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "15"
-    },
     "013000:013030:16": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "16"
-    },
-    "014030:014030:15": {
-      "level": "注意報",
-      "status": "発表",
-      "warning_code": "15"
     },
     "014030:014030:16": {
       "level": "注意報",
@@ -67,11 +47,6 @@
       "level": "注意報",
       "status": "継続",
       "warning_code": "16"
-    },
-    "014100:014020:15": {
-      "level": "注意報",
-      "status": "発表",
-      "warning_code": "15"
     },
     "014100:014020:16": {
       "level": "注意報",
@@ -92,11 +67,6 @@
       "level": "注意報",
       "status": "発表",
       "warning_code": "10"
-    },
-    "016000:016010:15": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "15"
     },
     "016000:016020:03": {
       "level": "警報",
@@ -799,11 +769,6 @@
       "warning_code": "16"
     },
     "474000:474010:16": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "16"
-    },
-    "474000:474020:16": {
       "level": "注意報",
       "status": "継続",
       "warning_code": "16"
