@@ -12,13 +12,13 @@
   "typhoons": {
     "TC2634": {
       "category": "TY",
-      "forecast_issue_time": "2026-10-10T10:10:00+09:00",
-      "issue_time": "2026-10-10T10:10:00+09:00"
+      "forecast_issue_time": "2026-10-10T13:05:00+09:00",
+      "issue_time": "2026-10-10T13:05:00+09:00"
     },
     "TC2635": {
       "category": "TS",
-      "forecast_issue_time": "2026-10-10T09:45:00+09:00",
-      "issue_time": "2026-10-10T09:45:00+09:00"
+      "forecast_issue_time": "2026-10-10T12:45:00+09:00",
+      "issue_time": "2026-10-10T12:45:00+09:00"
     }
   },
   "warnings": {
