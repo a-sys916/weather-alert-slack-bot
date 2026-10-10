@@ -1,11 +1,11 @@
 {
   "early_warnings": {
-    "460100:460030:heavy_rain": {
-      "earliest_time": "2026-10-10T12:00:00+09:00",
+    "471000:471010:heavy_rain": {
+      "earliest_time": "2026-10-11T12:00:00+09:00",
       "level": "中"
     },
-    "460100:460040:heavy_rain": {
-      "earliest_time": "2026-10-10T12:00:00+09:00",
+    "471000:471020:heavy_rain": {
+      "earliest_time": "2026-10-11T12:00:00+09:00",
       "level": "中"
     }
   },
