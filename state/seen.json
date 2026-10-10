@@ -12,13 +12,13 @@
   "typhoons": {
     "TC2634": {
       "category": "TY",
-      "forecast_issue_time": "2026-10-10T13:05:00+09:00",
-      "issue_time": "2026-10-10T13:05:00+09:00"
+      "forecast_issue_time": "2026-10-10T16:05:00+09:00",
+      "issue_time": "2026-10-10T16:05:00+09:00"
     },
     "TC2635": {
       "category": "TS",
-      "forecast_issue_time": "2026-10-10T12:45:00+09:00",
-      "issue_time": "2026-10-10T12:45:00+09:00"
+      "forecast_issue_time": "2026-10-10T15:45:00+09:00",
+      "issue_time": "2026-10-10T15:45:00+09:00"
     }
   },
   "warnings": {
@@ -462,11 +462,6 @@
       "status": "継続",
       "warning_code": "15"
     },
-    "300000:300020:16": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "16"
-    },
     "310000:310010:10": {
       "level": "注意報",
       "status": "発表",
@@ -517,20 +512,10 @@
       "status": "継続",
       "warning_code": "15"
     },
-    "390000:390020:16": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "16"
-    },
     "390000:390030:15": {
       "level": "注意報",
       "status": "継続",
       "warning_code": "15"
-    },
-    "390000:390030:16": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "16"
     },
     "400000:400010:16": {
       "level": "注意報",
@@ -692,20 +677,10 @@
       "status": "発表",
       "warning_code": "10"
     },
-    "460100:460010:15": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "15"
-    },
     "460100:460010:16": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "16"
-    },
-    "460100:460020:15": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "15"
     },
     "460100:460020:16": {
       "level": "注意報",
