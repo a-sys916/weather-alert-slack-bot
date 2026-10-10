@@ -1,11 +1,11 @@
 {
   "early_warnings": {
     "460100:460030:heavy_rain": {
-      "earliest_time": "2026-10-10T06:00:00+09:00",
+      "earliest_time": "2026-10-10T12:00:00+09:00",
       "level": "中"
     },
     "460100:460040:heavy_rain": {
-      "earliest_time": "2026-10-10T06:00:00+09:00",
+      "earliest_time": "2026-10-10T12:00:00+09:00",
       "level": "中"
     }
   },
@@ -136,6 +136,11 @@
       "level": "注意報",
       "status": "継続",
       "warning_code": "10"
+    },
+    "070000:070020:16": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "16"
     },
     "070000:070030:15": {
       "level": "注意報",
