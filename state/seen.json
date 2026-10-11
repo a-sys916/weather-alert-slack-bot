@@ -1,24 +1,24 @@
 {
   "early_warnings": {
     "471000:471010:heavy_rain": {
-      "earliest_time": "2026-10-11T12:00:00+09:00",
+      "earliest_time": "2026-10-11T06:00:00+09:00",
       "level": "中"
     },
     "471000:471020:heavy_rain": {
-      "earliest_time": "2026-10-11T12:00:00+09:00",
+      "earliest_time": "2026-10-11T06:00:00+09:00",
       "level": "中"
     }
   },
   "typhoons": {
     "TC2634": {
       "category": "TY",
-      "forecast_issue_time": "2026-10-10T19:10:00+09:00",
-      "issue_time": "2026-10-10T19:10:00+09:00"
+      "forecast_issue_time": "2026-10-11T10:10:00+09:00",
+      "issue_time": "2026-10-11T10:10:00+09:00"
     },
     "TC2635": {
       "category": "TS",
-      "forecast_issue_time": "2026-10-10T18:45:00+09:00",
-      "issue_time": "2026-10-10T18:45:00+09:00"
+      "forecast_issue_time": "2026-10-11T09:45:00+09:00",
+      "issue_time": "2026-10-11T09:45:00+09:00"
     }
   },
   "warnings": {
@@ -727,7 +727,17 @@
       "status": "継続",
       "warning_code": "15"
     },
-    "472000:472000:16": {
+    "473000:473000:16": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "16"
+    },
+    "474000:474010:16": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "16"
+    },
+    "474000:474020:16": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "16"
