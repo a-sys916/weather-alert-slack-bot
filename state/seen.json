@@ -1,5 +1,10 @@
 {
-  "early_warnings": {},
+  "early_warnings": {
+    "011000:011000:heavy_rain": {
+      "earliest_time": "2026-10-14T06:00:00+09:00",
+      "level": "中"
+    }
+  },
   "typhoons": {
     "TC2634": {
       "category": "STS",
