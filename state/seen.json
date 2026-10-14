@@ -1,15 +1,11 @@
 {
   "early_warnings": {
-    "011000:011000:heavy_rain": {
-      "earliest_time": "2026-10-14T06:00:00+09:00",
-      "level": "中"
-    },
     "150000:150010:heavy_rain": {
-      "earliest_time": "2026-10-14T06:00:00+09:00",
+      "earliest_time": "2026-10-14T12:00:00+09:00",
       "level": "中"
     },
     "150000:150020:heavy_rain": {
-      "earliest_time": "2026-10-14T06:00:00+09:00",
+      "earliest_time": "2026-10-14T12:00:00+09:00",
       "level": "中"
     }
   },
@@ -18,6 +14,11 @@
       "category": "LOW",
       "forecast_issue_time": "2026-10-14T09:50:00+09:00",
       "issue_time": "2026-10-14T09:50:00+09:00"
+    },
+    "TC2636": {
+      "category": "TD",
+      "forecast_issue_time": "2026-10-14T10:30:00+09:00",
+      "issue_time": "2026-10-14T10:30:00+09:00"
     }
   },
   "warnings": {
@@ -188,7 +189,7 @@
     },
     "050000:050010:15": {
       "level": "注意報",
-      "status": "発表",
+      "status": "継続",
       "warning_code": "15"
     },
     "050000:050010:16": {
