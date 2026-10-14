@@ -8,8 +8,8 @@
     },
     "TC2636": {
       "category": "TD",
-      "forecast_issue_time": "2026-10-14T16:05:00+09:00",
-      "issue_time": "2026-10-14T16:05:00+09:00"
+      "forecast_issue_time": "2026-10-14T19:05:00+09:00",
+      "issue_time": "2026-10-14T19:05:00+09:00"
     }
   },
   "warnings": {
@@ -427,11 +427,6 @@
       "level": "注意報",
       "status": "発表",
       "warning_code": "16"
-    },
-    "150000:150040:15": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "15"
     },
     "150000:150040:16": {
       "level": "注意報",
