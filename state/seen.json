@@ -2,9 +2,9 @@
   "early_warnings": {},
   "typhoons": {
     "TC2636": {
-      "category": "TS",
-      "forecast_issue_time": "2026-10-16T09:45:00+09:00",
-      "issue_time": "2026-10-16T09:45:00+09:00"
+      "category": "STS",
+      "forecast_issue_time": "2026-10-16T12:50:00+09:00",
+      "issue_time": "2026-10-16T12:50:00+09:00"
     }
   },
   "warnings": {
@@ -118,12 +118,7 @@
       "status": "継続",
       "warning_code": "10"
     },
-    "020000:020010:15": {
-      "level": "注意報",
-      "status": "発表",
-      "warning_code": "15"
-    },
-    "020000:020030:15": {
+    "017000:017020:15": {
       "level": "注意報",
       "status": "発表",
       "warning_code": "15"
@@ -167,6 +162,11 @@
       "level": "注意報",
       "status": "発表",
       "warning_code": "16"
+    },
+    "050000:050020:10": {
+      "level": "注意報",
+      "status": "発表",
+      "warning_code": "10"
     },
     "060000:060030:15": {
       "level": "注意報",
