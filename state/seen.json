@@ -1,10 +1,15 @@
 {
-  "early_warnings": {},
+  "early_warnings": {
+    "270000:270000:heavy_rain": {
+      "earliest_time": "2026-10-30T18:00:00+09:00",
+      "level": "高"
+    }
+  },
   "typhoons": {
     "TC2637": {
       "category": "TY",
-      "forecast_issue_time": "2026-10-30T15:45:00+09:00",
-      "issue_time": "2026-10-30T15:45:00+09:00"
+      "forecast_issue_time": "2026-10-30T21:45:00+09:00",
+      "issue_time": "2026-10-30T21:45:00+09:00"
     }
   },
   "warnings": {
@@ -51,6 +56,11 @@
     "014030:014030:16": {
       "level": "注意報",
       "status": "継続",
+      "warning_code": "16"
+    },
+    "014100:014010:16": {
+      "level": "注意報",
+      "status": "発表",
       "warning_code": "16"
     },
     "014100:014020:16": {
@@ -268,11 +278,6 @@
       "status": "継続",
       "warning_code": "15"
     },
-    "080000:080020:16": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "16"
-    },
     "090000:090010:15": {
       "level": "注意報",
       "status": "発表",
@@ -303,11 +308,6 @@
       "status": "継続",
       "warning_code": "15"
     },
-    "120000:120020:16": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "16"
-    },
     "120000:120030:03": {
       "level": "警報",
       "status": "継続",
@@ -333,11 +333,6 @@
       "status": "継続",
       "warning_code": "15"
     },
-    "120000:120030:16": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "16"
-    },
     "130000:130010:03": {
       "level": "警報",
       "status": "継続",
@@ -348,11 +343,6 @@
       "status": "継続",
       "warning_code": "10"
     },
-    "130000:130020:16": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "16"
-    },
     "130000:130030:07": {
       "level": "警報",
       "status": "継続",
@@ -362,11 +352,6 @@
       "level": "注意報",
       "status": "発表",
       "warning_code": "10"
-    },
-    "130000:130030:16": {
-      "level": "注意報",
-      "status": "継続",
-      "warning_code": "16"
     },
     "130000:130040:05": {
       "level": "警報",
